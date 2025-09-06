@@ -1,0 +1,21 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.4)
+
+2025-09-06T10:43:06.440+05:30  INFO 25592 --- [           main] com.example.demo.DemoApplication         : Starting DemoApplication v1.0-SNAPSHOT using Java 21.0.2 with PID 25592 (D:\Manoj\App\simple-webapp\target\simple-webapp-1.0-SNAPSHOT.jar started by evman in D:\Manoj\App\simple-webapp)
+2025-09-06T10:43:06.447+05:30  INFO 25592 --- [           main] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-09-06T10:43:07.509+05:30  INFO 25592 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-09-06T10:43:07.523+05:30  INFO 25592 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-06T10:43:07.523+05:30  INFO 25592 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-09-06T10:43:07.561+05:30  INFO 25592 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-06T10:43:07.563+05:30  INFO 25592 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1026 ms
+2025-09-06T10:43:07.932+05:30  INFO 25592 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path ''
+2025-09-06T10:43:07.949+05:30  INFO 25592 --- [           main] com.example.demo.DemoApplication         : Started DemoApplication in 1.993 seconds (process running for 2.458)
+2025-09-06T10:43:11.458+05:30  INFO 25592 --- [nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-06T10:43:11.458+05:30  INFO 25592 --- [nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-06T10:43:11.458+05:30  INFO 25592 --- [nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms

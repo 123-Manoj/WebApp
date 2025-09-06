@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven-3.9.5'   // configure this in Jenkins "Global Tool Configuration"
+        jdk 'Java-21'         // configure this in Jenkins as well
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/<username>/<repo>.git'
+            }
+        }
+
+        stage('Build with Maven') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t simple-webapp .'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker run -d -p 9090:9090 --name simple-webapp simple-webapp || true'
+            }
+        }
+    }
+}
+
