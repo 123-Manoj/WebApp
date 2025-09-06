@@ -16,15 +16,17 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t simple-webapp .'
+                bat 'docker build -t simple-webapp .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 9090:9090 --name simple-webapp simple-webapp || true'
+                bat '''
+                docker rm -f simple-webapp || echo "No old container"
+                docker run -d -p 9090:9090 --name simple-webapp simple-webapp
+                '''
             }
         }
     }
 }
-
