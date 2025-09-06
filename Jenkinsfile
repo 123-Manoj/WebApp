@@ -23,7 +23,8 @@ pipeline {
         stage('Cleanup Old Container') {
             steps {
                 bat '''
-                for /f "tokens=*" %%i in ('docker ps -aq -f name=simple-webapp') do (
+                REM Stop and remove existing simple-webapp container
+                for /f "tokens=*" %%i in ('docker ps -aq --filter "name=simple-webapp"') do (
                     docker stop %%i
                     docker rm %%i
                 )
