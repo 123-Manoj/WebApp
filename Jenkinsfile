@@ -16,25 +16,24 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t simple-webapp .'
+                bat 'docker build -t simple-webapp .'
             }
         }
 
         stage('Cleanup Old Container') {
             steps {
-                // Stop and remove container if it already exists
-                sh '''
-                if [ "$(docker ps -aq -f name=simple-webapp)" ]; then
-                    docker stop simple-webapp || true
-                    docker rm simple-webapp || true
-                fi
+                bat '''
+                for /f "tokens=*" %%i in ('docker ps -aq -f name=simple-webapp') do (
+                    docker stop %%i
+                    docker rm %%i
+                )
                 '''
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 9090:9090 --name simple-webapp simple-webapp'
+                bat 'docker run -d -p 9090:9090 --name simple-webapp simple-webapp'
             }
         }
     }
