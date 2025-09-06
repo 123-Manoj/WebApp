@@ -2,20 +2,20 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven-3.9.5'   // configure this in Jenkins "Global Tool Configuration"
+        maven 'Maven-3.9.11'   // configure this in Jenkins "Global Tool Configuration"
         jdk 'Java-21'         // configure this in Jenkins as well
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/<username>/<repo>.git'
+                git branch: 'main', url: 'https://github.com/123-Manoj/WebApp.git'
             }
         }
 
         stage('Build with Maven') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                bat '"C:\\Program Files\\Apache\\Maven\\maven-mvnd-1.0.2-windows-amd64\\bin\\mvnd.cmd" clean package -DskipTests'
             }
         }
 
