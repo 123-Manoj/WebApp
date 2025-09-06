@@ -11,7 +11,7 @@ public class DemoApplication {
 
     @GetMapping("/")
     public String home() {
-        return "<h1>🚀 Welcome to My DevOps WebApp</h1>";
+        return "<h1>🚀 Welcome to My DevOps WebApp page</h1>";
     }
 
     public static void main(String[] args) {
