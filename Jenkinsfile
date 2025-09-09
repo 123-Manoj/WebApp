@@ -10,31 +10,28 @@ pipeline {
 
         stage('Build with Maven') {
             steps {
-                bat '"C:\\Program Files\\Apache\\Maven\\maven-mvnd-1.0.2-windows-amd64\\bin\\mvnd.cmd" clean package -DskipTests'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t simple-webapp .'
+                sh 'docker build -t simple-webapp .'
             }
         }
 
         stage('Cleanup Old Container') {
             steps {
-                bat '''
-                REM Stop and remove existing simple-webapp container
-                for /f "tokens=*" %%i in ('docker ps -aq --filter "name=simple-webapp"') do (
-                    docker stop %%i
-                    docker rm %%i
-                )
+                sh '''
+                docker stop simple-webapp || true
+                docker rm simple-webapp || true
                 '''
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 9090:9090 --name simple-webapp simple-webapp'
+                sh 'docker run -d -p 9090:9090 --name simple-webapp simple-webapp'
             }
         }
     }
