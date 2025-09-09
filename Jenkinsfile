@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven_3.8.4'   // name from Global Tool Configuration
-        jdk 'Java_21'       // name from Global Tool Configuration
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -28,11 +23,8 @@ pipeline {
         stage('Cleanup Old Container') {
             steps {
                 sh '''
-                # Stop and remove existing container if it exists
-                if [ $(docker ps -aq -f name=simple-webapp) ]; then
-                    docker stop simple-webapp || true
-                    docker rm simple-webapp || true
-                fi
+                docker stop simple-webapp || true
+                docker rm simple-webapp || true
                 '''
             }
         }
