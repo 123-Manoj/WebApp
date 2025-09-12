@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'
-        jdk 'Java_21'
+        jdk 'Java_21'   // 👈 This matches the JDK name in Jenkins settings
+        maven 'Maven_3' // 👈 If you’ve also added Maven in Jenkins Tools
     }
 
     stages {
@@ -13,30 +13,15 @@ pipeline {
             }
         }
 
-        stage('Build with Maven') {
+        stage('Build') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn clean install'
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Run') {
             steps {
-                sh 'docker build -t simple-webapp .'
-            }
-        }
-
-        stage('Cleanup Old Container') {
-            steps {
-                sh '''
-                docker stop simple-webapp || true
-                docker rm simple-webapp || true
-                '''
-            }
-        }
-
-        stage('Run Docker Container') {
-            steps {
-                sh 'docker run -d -p 9090:9090 --name simple-webapp simple-webapp'
+                sh 'java -jar target/*.jar'
             }
         }
     }
